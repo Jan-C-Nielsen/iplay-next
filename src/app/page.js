@@ -1,10 +1,12 @@
 import { cookies } from "next/headers";
 import Image from "next/image";
+import PlayListItem from "../PlayListItem.jsx";
+import Link from "next/link.js";
 
 export default async function Home() {
   const cookieStore = await cookies();
   const accessTokenCookie = cookieStore.get("IPM_AT");
-  const Playlist = [{ id: '1', name: 'My Playlist 1' }, { id: '2', name: 'My Playlist 2' }, { id: '3', name: 'My Playlist 3' }];
+  let Playlists = [{ id: '1', name: 'My Playlist 1' }, { id: '2', name: 'My Playlist 2' }, { id: '3', name: 'My Playlist 3' }];
 
   const response = await fetch("https://api.spotify.com/v1/me", {
     headers: {
@@ -14,6 +16,15 @@ export default async function Home() {
 
   console.log(await response);
 
+  const PlayListResponse = await fetch(" https://api.spotify.com/v1/me/playlists", {
+    headers: {
+      Authorization: `Bearer ${accessTokenCookie.value}`
+    }
+  });
+
+  Playlists = await PlayListResponse.json();
+
+  console.log("Playlists:", Playlists);
 
   return <div className="w-[450px] mx-auto">
     <div className="relative w-full h-64">
@@ -28,8 +39,8 @@ export default async function Home() {
     <h2 className="mb-30 text-[20px] font-bold text-center">Rock Ballads</h2>
     <div className=" flex items-center justify-center">
       <ul >
-        {Playlist.map((playlist) => (
-          <li key={playlist.id}>{playlist.name}</li>
+        {Playlists.items.map((playlist) => (
+          <li><Link href={`/playlist/${playlist.id}`}> {playlist.name}</Link></li>
         ))}
       </ul>
     </div>
@@ -41,6 +52,6 @@ export default async function Home() {
         LISTEN ALL
       </button>
     </div>
- </div>
+  </div>
     ;
 }

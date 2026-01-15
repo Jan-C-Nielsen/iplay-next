@@ -26,8 +26,7 @@ export default function LoginPage() {
 		<a 
       className="inline-block rounded-md bg-blue-600 px-6 py-3 text-white font-medium hover:bg-blue-700 transition"
             
-        href={`https://accounts.spotify.com/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&show_dialog=true&scope=playlist-read-private`}>Log on Spotify</a>
-
+        href={`https://accounts.spotify.com/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&show_dialog=true&scope=playlist-read-private&scope=streaming&scope=user-read-playback-state&scope=user-modify-playback-state`}>Log on Spotify</a>
        
       </div>
       	</>
