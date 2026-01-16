@@ -1,3 +1,4 @@
+import ListenButton from "../../../ListenButton";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,25 +30,21 @@ export default async function Playlist({ params }) {
                 <Image src="/sound-wave.svg" alt="Example image" width={450} height={272} />
             </div>
             <div className="absolute inset-0 flex items-center justify-left">
-                <h1 className="text-white mt-[87px] mr-[26px] text-[36px] text-left">Playlists</h1>
+                <h1 className="text-white mt-[100px] mr-[26px] text-[36px] text-left">Playlists</h1>
             </div>
         </div>
-        <h2 className="mt-[59px] text-[20px] font-bold text-center">Top 50</h2>
-        <h2 className="mb-30 text-[20px] font-bold text-center">Rock Ballads</h2>
+        <h2 className="mt-[70px] text-[20px] font-bold text-center">{Playlist.name}</h2>
         <div className=" flex items-center justify-center">
             <ul > {Playlist.tracks.items.map((track) => (
-          <li><Link href={`/track/${track.track.id}`}> {track.track.name}</Link></li>
+          <li className="mb-[25px]"><Link href={`/track/${track.track.id}`}> 
+           <Image src={track.track.album.images[0]?.url ?? "/default-image.png"} alt={track.track.name} width={30} 
+          height={30} /> 
+          {track.track.name} 
+          <div className="text-[15px]">{track.track.artists[0].name}</div> </Link></li>
         ))}
-            </ul>
+            </ul> 
         </div>
-        <div className=" flex items-center justify-center">
-            <button
-                type="button"
-                className="fixed bottom-8 left-1/2 -translate-x-1/2 border-4 border-red-500 rounded-full px-6 py-3 text-red-500"
-            >
-                LISTEN ALL
-            </button>
-        </div>
+        <ListenButton />
     </div>
         ;
 }

@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import PlayListItem from "../PlayListItem.jsx";
 import Link from "next/link.js";
+import ListenButton from "../ListenButton.jsx";
 
 export default async function Home() {
   const cookieStore = await cookies();
@@ -35,23 +36,16 @@ export default async function Home() {
         <h1 className="text-white mt-[87px] mr-[26px] text-[36px] text-left">Playlists</h1>
       </div>
     </div>
-    <h2 className="mt-[59px] text-[20px] font-bold text-center">Top 50</h2>
-    <h2 className="mb-30 text-[20px] font-bold text-center">Rock Ballads</h2>
-    <div className=" flex items-center justify-center">
+    <div className=" flex mt-[70px] text-[20px] items-center justify-center">
       <ul >
         {Playlists.items.map((playlist) => (
-          <li><Link href={`/playlist/${playlist.id}`}> {playlist.name}</Link></li>
+          <li className="text-[20px] mt-[10px]"><Link href={`/playlist/${playlist.id}`}>
+             <Image src={playlist.images[0].url} alt="Example image" width={playlist.images[2]?.width ?? 100} height={playlist.images[2]?.height ?? 100} />
+             {playlist.name}</Link></li>
         ))}
       </ul>
     </div>
-    <div className=" flex items-center justify-center">
-      <button
-        type="button"
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 border-4 border-red-500 rounded-full px-6 py-3 text-red-500"
-      >
-        LISTEN ALL
-      </button>
-    </div>
+   <ListenButton />
   </div>
     ;
 }
