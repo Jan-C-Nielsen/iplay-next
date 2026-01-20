@@ -38,8 +38,8 @@ export default async function Home() {
     </div>
     <div className=" flex mt-[70px] text-[20px] items-center justify-center">
       <ul >
-        {Playlists.items.map((playlist) => (
-          <li className="text-[20px] mt-[10px]"><Link href={`/playlist/${playlist.id}`}>
+        {Playlists.items.map((playlist, index) => (
+          <li className="text-[20px] mt-[10px]" key={index}><Link href={`/playlist/${playlist.id}`}>
              <Image src={playlist.images[0].url} alt="Example image" width={playlist.images[2]?.width ?? 100} height={playlist.images[2]?.height ?? 100} />
              {playlist.name}</Link></li>
         ))}

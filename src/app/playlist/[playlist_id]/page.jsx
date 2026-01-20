@@ -2,7 +2,7 @@ import ListenButton from "../../../ListenButton";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
-//import PlayListItem from "../PlayListItem.jsx";
+import PlayListItem from "@/PlayListItem.jsx";
 
 export default async function Playlist({ params }) {
      const cookieStore = await cookies();// forkert siger AI
@@ -35,13 +35,7 @@ export default async function Playlist({ params }) {
         </div>
         <h2 className="mt-[70px] text-[20px] font-bold text-center">{Playlist.name}</h2>
         <div className=" flex items-center justify-center">
-            <ul > {Playlist.tracks.items.map((track) => (
-          <li className="mb-[25px]"><Link href={`/track/${track.track.id}`}> 
-           <Image src={track.track.album.images[0]?.url ?? "/default-image.png"} alt={track.track.name} width={30} 
-          height={30} /> 
-          {track.track.name} 
-          <div className="text-[15px]">{track.track.artists[0].name}</div> </Link></li>
-        ))}
+            <ul > {Playlist.tracks.items.map((track, index) => (<PlayListItem track={track.track} key={index} />))} 
             </ul> 
         </div>
         <ListenButton />

@@ -1,14 +1,21 @@
+"use client";
 import Image from "next/image";
+import PlayButton from "./PlayButton";
 
-export default function PlayListItem({
-    title = "Untitled",
-    subtitle = "",
-    duration = "",
-    thumbnailSrc = "",
-    isActive = false,
-    onClick,
-}) {
+export default function PlayListItem(item) {
+    const  title = item.name;
+    const subtitle = item.track.name ;
+    const artistNames = item.track.artists.map(artist => artist.name).join(", ");
+    const duration = item.track.duration_ms ? new Date(item.track.duration_ms).toISOString().substr(14, 5) : null;
+    const thumbnailSrc = item.track.album.images && item.track.album.images.length > 0 ? item.track.album.images[0].url : null;
+
+    const isActive = false;
+    const onClick = () => {};
+
     return (
+        <>
+                 
+       
         <button
             type="button"
             onClick={onClick}
@@ -19,22 +26,17 @@ export default function PlayListItem({
             ].join(" ")}
             aria-current={isActive ? "true" : undefined}
         >
-            <div className="relative h-12 w-12 overflow-hidden rounded-md bg-gray-200 shrink-0">
-                {thumbnailSrc ? (
-                    <Image
-                        src={thumbnailSrc}
-                        alt={title}
-                        fill
-                        className="object-cover"
-                        sizes="48px"
-                    />
-                ) : null}
+            <div >
+              <PlayButton />
             </div>
 
             <div className="min-w-0 flex-1">
                 <div className="truncate font-medium">{title}</div>
                 {subtitle ? (
-                    <div className="truncate text-sm text-gray-600">{subtitle}</div>
+                    <div className="truncate text-base text-gray-600">{subtitle}</div>
+                ) : null}
+                {artistNames ? (
+                    <div className=" truncate text-sm text-gray-600">{artistNames}</div>
                 ) : null}
             </div>
 
@@ -44,5 +46,6 @@ export default function PlayListItem({
                 </div>
             ) : null}
         </button>
+        </>
     );
 }

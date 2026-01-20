@@ -1,0 +1,46 @@
+ <Image src={track.track.album.images[0]?.url ?? "/default-image.png"} alt={track.track.name} width={track.track.album.images[0]?.width ?? 100} 
+          height={track.track.album.images[0]?.height ?? 100} />
+
+          
+
+          <div className="relative w-full h-64">
+            <div className="flex justify-center">
+                <Image src="/sound-wave.svg" alt="Example image" width={450} height={272} />
+            </div>
+            <div className="absolute inset-0 flex items-center justify-left">
+                <h1 className="text-white mt-[100px] mr-[26px] text-[36px] text-left">Playlists</h1>
+            </div>
+        </div>
+        <h2 className="mt-[70px] text-[20px] font-bold text-center">{Playlist.name}</h2>
+        <div className=" flex items-center justify-center">
+            <ul > {Playlist.tracks.items.map((track) => (
+          <li className="mb-[25px]"><Link href={`/track/${track.track.id}`}> 
+           <Image src={track.track.album.images[0]?.url ?? "/default-image.png"} alt={track.track.name} width={30} 
+          height={30} /> 
+          {track.track.name} 
+          <div className="text-[15px]">{track.track.artists[0].name}</div> </Link></li>
+        ))}
+            </ul> 
+        </div>
+        <ListenButton />
+
+        /** @type {import('next').NextConfig} */
+const nextConfig = {
+  /* config options here */
+  allowedDevOrigins: ["127.0.0.1:3000", "mosaic.scdn.co"],
+   images: {
+    remotePatterns: [new URL('https://mosaic.scdn.co/**'), new URL('https://i.scdn.co/**')],
+  },
+};
+
+export default nextConfig;
+
+  {thumbnailSrc ? (
+                    <Image
+                        src={thumbnailSrc}
+                        alt={subtitle}
+                        fill
+                        className="object-cover"
+                        sizes="48px"
+                    />
+                ) : null}
