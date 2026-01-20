@@ -4,11 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import PlayListItem from "@/PlayListItem.jsx";
 
+import PlayListClient from "./PlayListClient";
+
 export default async function Playlist({ params }) {
      const cookieStore = await cookies();// forkert siger AI
    // const cookieStore = cookies();
     const accessTokenCookie = cookieStore.get("IPM_AT");
-    let Playlist = [{ id: '1', name: 'My Playlist 1' }, { id: '2', name: 'My Playlist 2' }, { id: '3', name: 'My Playlist 3' }];
+    let Playlist = [];
 
     const playlist_id = (await params).playlist_id;
     console.log("params.playlist_id", playlist_id);
@@ -34,11 +36,7 @@ export default async function Playlist({ params }) {
             </div>
         </div>
         <h2 className="mt-[70px] text-[20px] font-bold text-center">{Playlist.name}</h2>
-        <div className=" flex items-center justify-center">
-            <ul > {Playlist.tracks.items.map((track, index) => (<PlayListItem track={track.track} key={index} />))} 
-            </ul> 
-        </div>
-        <ListenButton />
-    </div>
+        {/* Client component */}
+      <PlayListClient tracks={Playlist.tracks.items} /></div>
         ;
 }

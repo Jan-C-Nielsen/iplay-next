@@ -2,7 +2,8 @@
 import Image from "next/image";
 import PlayButton from "./PlayButton";
 
-export default function PlayListItem(item) {
+export default function PlayListItem({ track, onHoverChange }) {
+    const item = { track }; // Wrap track in an object to match previous structure
     const  title = item.name;
     const subtitle = item.track.name ;
     const artistNames = item.track.artists.map(artist => artist.name).join(", ");
@@ -11,7 +12,8 @@ export default function PlayListItem(item) {
 
     const isActive = false;
     const onClick = () => {};
-
+    const onMouseEnter = () => onHoverChange?.(true);
+    const onMouseLeave = () => onHoverChange?.(false);
     return (
         <>
                  
@@ -19,6 +21,8 @@ export default function PlayListItem(item) {
         <button
             type="button"
             onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
             className={[
                 "w-full flex items-center gap-3 p-3 rounded-md text-left",
                 "hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
