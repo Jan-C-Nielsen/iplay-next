@@ -1,3 +1,4 @@
+import { redirect } from "next/dist/server/api-utils";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +9,12 @@ export default async function Playlist({ params }) {
    // const cookieStore = cookies();
     const accessTokenCookie = cookieStore.get("IPM_AT");
    
+if (!accessTokenCookie) {
+    console.error("Access token cookie not found");
+    redirect("/login"); // Redirect to home page if no access token
+    return null;
+  }
+
     const id = (await params).id; 
     console.log("id", id);
 

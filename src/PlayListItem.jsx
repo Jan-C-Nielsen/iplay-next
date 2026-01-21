@@ -12,19 +12,18 @@ export default function PlayListItem({ track, onHoverChange }) {
 
     const isActive = false;
     const onClick = () => {};
-    const onMouseEnter = () => onHoverChange?.(true);
-    const onMouseLeave = () => onHoverChange?.(false);
+    const onMouseEnter = () =>  onHoverChange?.(thumbnailSrc); // 👈 send URL;
+    const onMouseLeave = () => onHoverChange?.(null);
+    
     return (
-        <>
-                 
-       
+        <> 
         <button
             type="button"
             onClick={onClick}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             className={[
-                "w-full flex items-center gap-3 p-3 rounded-md text-left",
+                "w-full flex items-center mb-1 p-3 rounded-md text-left",
                 "hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
                 isActive ? "bg-gray-100" : "bg-transparent",
             ].join(" ")}
