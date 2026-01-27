@@ -8,7 +8,7 @@ export default function PlayListItem({ track, onHoverChange }) {
     const subtitle = item.track.name ;
     const artistNames = item.track.artists.map(artist => artist.name).join(", ");
     const duration = item.track.duration_ms ? new Date(item.track.duration_ms).toISOString().substr(14, 5) : null;
-    const thumbnailSrc = item.track.album.images && item.track.album.images.length > 0 ? item.track.album.images[0].url : null;
+    const thumbnailSrc = item.track.album?.images && item.track.album?.images.length > 0 ? item.track.album?.images[0].url : null;
 
     const isActive = false;
     const onClick = () => {};

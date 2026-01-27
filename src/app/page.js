@@ -14,25 +14,23 @@ export default async function Home() {
     redirect("/login"); // Redirect to login page if no access token
   }
 
-  let Playlists = [];
-
-  const response = await fetch("https://api.spotify.com/v1/me", {
+  
+  const PlayListResponse = await fetch("https://api.spotify.com/v1/me/playlists", {
     headers: {
       Authorization: `Bearer ${accessTokenCookie.value}`
     }
   });
 
-  console.log(await response);
-
-  const PlayListResponse = await fetch(" https://api.spotify.com/v1/me/playlists", {
-    headers: {
-      Authorization: `Bearer ${accessTokenCookie.value}`
-    }
-  });
+  let Playlists = {};
+  if (PlayListResponse.headers.get("Content-Type")?.includes("application/json")) {
 
   Playlists = await PlayListResponse.json();
 
   console.log("Playlists:", Playlists);
+  }
+  else {
+    return <div >Error: {PlayListResponse.statusText}</div>;
+  }
 
   return <div className="w-[450px] mx-auto">
     <div className="relative w-full h-64">

@@ -1,20 +1,27 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
+import { useRouter } from "next/navigation";
+
 export default function Header() {
+    const router = useRouter();
 
     return (
         <header>
-            <div className="w-[450px] pt-4 pb-4 mx-auto flex bg-gradient-to-r from-[#EE0979] to-[#FF6A00]">
+            <div className="fixed relative z-10 w-[450px] pt-4 pb-4 mx-auto flex bg-transparent mix-blend-difference">
 
-                <Image className="ml-12"
-                    src="/_ionicons_svg_ios-arrow-back.svg"
-                    alt="Background"
-                    width={10}
-                    height={10}
+                <button className="ml-12 cursor-pointer " onClick={() => router.back()}>
+                    <Image
+                        src="/_ionicons_svg_ios-arrow-back.svg"
+                        alt="Back"
+                        width={10} 
+                        height={10}
+                    />
+                </button>
 
-                />
-               <Link href="/search" className="ml-auto mr-12">
+                <Link href="/search" className="ml-auto mr-12">
                     <Image
                         src="/_ionicons_svg_ios-search.svg"
                         alt="Overlay"
