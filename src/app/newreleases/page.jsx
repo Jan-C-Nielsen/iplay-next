@@ -23,7 +23,7 @@ export default async function NewReleases() {
     const NewReleases = await response.json();
     console.log("NewReleases:", NewReleases);
 
-    return (<div className="w-[450px] mx-auto">
+    return (<div className="w-[450px] mt-[160px] mx-auto">
         <h1 className=" mt-[8px] text-[27px] text-[#FF6A00] font-bold ">Albums</h1>
         <div className="flex">
             <h2 className="text-black mt-[8px]  text-[15px] font-bold ">New Releases</h2>

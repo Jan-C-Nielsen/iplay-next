@@ -1,45 +1,34 @@
-import { redirect } from "next/dist/server/api-utils";
-import { cookies } from "next/headers";
-import Image from "next/image";
-import Link from "next/link";
-//import PlayListItem from "../PlayListItem.jsx";
+"use client"
 
-export default async function Playlist({ params }) {
-     const cookieStore = await cookies();// forkert siger AI
-   // const cookieStore = cookies();
-    const accessTokenCookie = cookieStore.get("IPM_AT");
-   
-if (!accessTokenCookie) {
-    console.error("Access token cookie not found");
-    redirect("/login"); // Redirect to home page if no access token
-    return null;
-  }
+import { useRef, useState } from 'react';
+import { FaPlay, FaPause } from 'react-icons/fa';
 
-    const id = (await params).id; 
-    console.log("id", id);
+export default function Track({track}) {
 
-    const response = await fetch(`https://api.spotify.com/v1/tracks/${id}`, {
-        headers: {
-            Authorization: `Bearer ${accessTokenCookie.value}`
-        }
-    });
+const playerRef = useRef(null);
+const [isPlaying, setIsPlaying] = useState(false);
 
-    const Track = await response.json();
+function toggleplayer(event) {  
 
-    console.log("Track:", Track);
-
-await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
-  method: "PUT",
-  headers: {
-    Authorization: `Bearer ${accessToken}`,
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    uris: [`spotify:track:${id}`]
-  })
-});
+    if(!isPlaying) {
+        playerRef.current.play();
+        setIsPlaying(true);
+    }
+    else {
+        playerRef.current.pause();
+        setIsPlaying(false);
+    }
 
 
-    return null
-        ;
-}
+    return (
+        <li>
+            <button onClick={toggleplayer} className="flex flex-col items-center m-4">
+                {isPlaying ? <FaPause></FaPause> : <FaPlay></FaPlay>}
+            </button>
+            <span>{track.track.name}</span>
+            <span>{track.track.artists.map(artist => artist.name).join(", ")}</span>
+            <audio ref={playerRef} src="/Zambolino - Heat Is On (freetouse.com).mp3" />
+
+        </li>
+    )
+}}
