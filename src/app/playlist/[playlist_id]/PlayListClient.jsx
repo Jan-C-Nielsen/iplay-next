@@ -20,7 +20,7 @@ export default function PlayListClient({ tracks }) {
       <div className="-mt-48 z-100 relative h-[155px]" >
         {isPlayHovered && (<Image className="mx-auto" src={isPlayHovered} alt="Example image" width={155} height={155} />)}
       </div>
-      <div className="flex items-center justify-center mt-10">
+      <div className="flex pb-30 items-center justify-center mt-10">
         <ul>
           {tracks.map((track, index) => (
             <PlayListItem

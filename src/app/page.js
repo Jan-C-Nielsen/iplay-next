@@ -14,7 +14,6 @@ export default async function Home() {
     redirect("/login"); // Redirect to login page if no access token
   }
 
-  
   const PlayListResponse = await fetch("https://api.spotify.com/v1/me/playlists", {
     headers: {
       Authorization: `Bearer ${accessTokenCookie.value}`
@@ -24,9 +23,9 @@ export default async function Home() {
   let Playlists = {};
   if (PlayListResponse.headers.get("Content-Type")?.includes("application/json")) {
 
-  Playlists = await PlayListResponse.json();
+    Playlists = await PlayListResponse.json();
 
-  console.log("Playlists:", Playlists);
+    console.log("Playlists:", Playlists);
   }
   else {
     return <div >Error: {PlayListResponse.statusText}</div>;
@@ -50,7 +49,7 @@ export default async function Home() {
         ))}
       </ul>
     </div>
-    <ListenButton />
+    
   </div>
     ;
 }

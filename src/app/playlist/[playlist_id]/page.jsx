@@ -9,8 +9,8 @@ import { redirect } from "next/navigation";
 
 
 export default async function Playlist({ params }) {
-    const cookieStore = await cookies();// forkert siger AI
-    // const cookieStore = cookies();
+    const cookieStore = await cookies();
+   
     const accessTokenCookie = cookieStore.get("IPM_AT");
 
     if (!accessTokenCookie) {

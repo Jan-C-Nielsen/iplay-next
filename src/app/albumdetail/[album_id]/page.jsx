@@ -44,7 +44,7 @@ export default async function AlbumDetail({ params }) {
                 </section>
             </div>
         </div>
-        <div className="mt-[160px] ">
+        <div className="mt-[160px] pb-30">
             <h2 className="text-[20px] font-bold text-center">{AlbumDetails.name}</h2>
             <ul>
                 {AlbumDetails.tracks.items.map((track, index) => (
@@ -56,6 +56,7 @@ export default async function AlbumDetail({ params }) {
                 ))}
             </ul>
         </div>
+        <ListenButton />
     </div>
         ;
 }

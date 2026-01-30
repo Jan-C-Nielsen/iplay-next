@@ -6,6 +6,7 @@ import { redirect, useSearchParams } from "next/navigation.js";
 import PlayListClient from "../playlist/[playlist_id]/PlayListClient";
 import PlayListItem from "@/PlayListItem";
 import { saveMessage } from "./actions";
+import ListenButton from "@/ListenButton";
 
 
 
@@ -62,7 +63,7 @@ export default async function SearchPage({ searchParams }) {
                 </button>
             </form>
 
-            <div className="flex items-center justify-center mt-10">
+            <div className="flex pb-30 items-center justify-center mt-10">
                 <ul>
                     {tracks && tracks.tracks.items.map((track, index) => (
                         console.log("track:", track),
@@ -74,6 +75,7 @@ export default async function SearchPage({ searchParams }) {
                     ))}
                 </ul>
             </div>
+            <ListenButton />
         </div>
     );
 }
