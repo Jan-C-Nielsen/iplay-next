@@ -19,7 +19,6 @@ export default async function Playlist({ params }) {
 
     }
 
-    let Playlist = [];
 
     const playlist_id = (await params).playlist_id;
     console.log("params.playlist_id", playlist_id);
@@ -31,7 +30,7 @@ export default async function Playlist({ params }) {
         }
     });
 
-    Playlist = await PlayListResponse.json();
+    const Playlist = await PlayListResponse.json();
 
     console.log("Playlist:", Playlist);
 
