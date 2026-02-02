@@ -15,7 +15,6 @@ export default function PlayListItem({ track, onHoverChange }) {
     const thumbnailSrc = item.track.album?.images && item.track.album?.images.length > 0 ? item.track.album?.images[0].url : null;
 
     const isActive = false;
-    // const onClick = () => {};
     const onMouseEnter = () => onHoverChange?.(thumbnailSrc); // 👈 send URL;
     const onMouseLeave = () => onHoverChange?.(null);
 
@@ -72,11 +71,10 @@ export default function PlayListItem({ track, onHoverChange }) {
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
                 className={[
-                    "w-full flex items-center mb-1 p-3 rounded-md text-left",
-                    "hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
-                    isActive ? "bg-gray-100" : "bg-transparent",
+                    "w-[450px] flex items-center mb-1 p-3 text-left",
+                    "hover:bg-gray-100 ",
+                   
                 ].join(" ")}
-                aria-current={isActive ? "true" : undefined}
             >
                 <div >
                     <PlayButton isPlaying={isPlaying} />

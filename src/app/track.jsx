@@ -1,4 +1,4 @@
-"'use client';
+"use client"
 
 import { useRef, useState } from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
@@ -31,4 +31,4 @@ function toggleplayer(event) {
 
         </li>
     )
-}
+}}
