@@ -24,7 +24,6 @@ export default async function NewReleases({ searchParams }) {
         headers: {
             Authorization: `Bearer ${accessTokenCookie.value}`
         },
-        cache: 'no-store'
     });
 
     const NewReleases = await response.json();
