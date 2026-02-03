@@ -44,8 +44,9 @@ export default function Footer() {
 
 
     return (
-        <footer className="mx-auto w-[480px] flex light:text-gray-300 light:bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.1)] dark:bg-gray-800 dark:text-white">
-            <div className="mx-auto max-w-7xl px-4 py-6 text-center">
+        <footer className="mx-auto w-[480px] flex light:text-gray-300 light:bg-white 
+         shadow-[0_-4px_12px_rgba(0,0,0,0.1)] dark:shadow-[0_-4px_12px_rgba(255,0,0,0.5)] dark:bg-gray-800 dark:text-white">
+            <div className="mx-auto max-w-7xl px-2 py-2 text-center">
                 {/* Clickable image */}
                 <button ref={menuRef} onClick={() => setOpen(!open)}>
                     <div className="relative inline-block">

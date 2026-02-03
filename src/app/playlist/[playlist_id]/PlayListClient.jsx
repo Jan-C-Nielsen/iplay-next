@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import PlayListItem from "@/PlayListItem";
+import PlayListItem from "../../../PlayListItem";
 import ListenButton from "../../../ListenButton";
 import Image from "next/image";
 

@@ -2,7 +2,7 @@ import ListenButton from "../../../ListenButton";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
-import PlayListItem from "@/PlayListItem.jsx";
+import PlayListItem from "../../../PlayListItem.jsx";
 
 import { redirect } from "next/navigation";
 

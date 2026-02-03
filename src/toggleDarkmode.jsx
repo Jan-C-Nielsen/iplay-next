@@ -13,7 +13,7 @@ export default function ToggleDarkmode() {
   return (
     <button 
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded light:bg-white dark:black"
+      className="p-2 light:bg-white dark:black"
     >
       {theme === "dark" ? "🌙" : "☀️"}
     </button>

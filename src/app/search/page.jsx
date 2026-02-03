@@ -4,10 +4,9 @@ import Link from "next/link.js";
 //import ListenButton from "../ListenButton.jsx";
 import { redirect, useSearchParams } from "next/navigation.js";
 import PlayListClient from "../playlist/[playlist_id]/PlayListClient";
-import PlayListItem from "@/PlayListItem";
+import PlayListItem from "../../PlayListItem";
 import { saveMessage } from "./actions";
-import ListenButton from "@/ListenButton";
-
+import ListenButton from "../../ListenButton";
 
 
 export default async function SearchPage({ searchParams }) {
