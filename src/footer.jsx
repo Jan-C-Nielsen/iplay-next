@@ -44,7 +44,7 @@ export default function Footer() {
 
 
     return (
-        <footer className="mt-auto w-full  text-gray-300 bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.1)]">
+        <footer className="mx-auto w-[480px] flex light:text-gray-300 light:bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.1)] dark:bg-gray-800 dark:text-white">
             <div className="mx-auto max-w-7xl px-4 py-6 text-center">
                 {/* Clickable image */}
                 <button ref={menuRef} onClick={() => setOpen(!open)}>
@@ -71,9 +71,6 @@ export default function Footer() {
                     </div>
                 </button>
 
-
-
-
                 {/* Popup menu */}
                 {open && (
                     <div className="absolute bottom-14 left-1/2 -translate-x-1/2
@@ -90,8 +87,10 @@ export default function Footer() {
                         </button>
                     </div>
                 )}
+              
             </div>
-            <ToggleDarkmode />
+  <ToggleDarkmode  />
+            
         </footer>
     )
 }

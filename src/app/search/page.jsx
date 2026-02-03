@@ -41,13 +41,13 @@ export default async function SearchPage({ searchParams }) {
 
     return (
         <div>
-            <h1 className="mt-32 mb-8 text-center text-3xl font-extrabold tracking-tight text-gray-900">
+            <h1 className="mt-32 mb-8 text-center text-3xl font-extrabold tracking-tight light:text-gray-900 dark:text-white">
                 Search Page
             </h1>
 
             <form
                 action={saveMessage}
-                className="mx-auto flex max-w-md items-center gap-3 rounded-2xl bg-white p-6 shadow-lg"
+                className="mx-auto flex max-w-md items-center gap-3 rounded-2xl light:bg-white dark:bg-gray-800 p-6 shadow-lg"
             >
                 <input
                     name="message"

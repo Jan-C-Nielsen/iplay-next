@@ -11,12 +11,11 @@ export default function ToggleDarkmode() {
   if (!mounted) return null;
 
   return (
-    <button
+    <button 
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded bg-gray-200 dark:bg-gray-700"
+      className="p-2 rounded light:bg-white dark:black"
     >
       {theme === "dark" ? "🌙" : "☀️"}
-      HEJ BUTTON
     </button>
   );
 }

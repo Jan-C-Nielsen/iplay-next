@@ -72,7 +72,7 @@ export default function PlayListItem({ track, onHoverChange }) {
                 onMouseLeave={onMouseLeave}
                 className={[
                     "w-[450px] flex items-center mb-1 p-3 text-left",
-                    "hover:bg-gray-100 ",
+                    "hover:bg-gray-400 hover:text-white",
                    
                 ].join(" ")}
             >
@@ -83,15 +83,15 @@ export default function PlayListItem({ track, onHoverChange }) {
                 <div className="ml-5 min-w-0 flex-1">
                     <div className="truncate font-medium">{title}</div>
                     {subtitle ? (
-                        <div className="truncate text-base text-gray-600">{subtitle}</div>
+                        <div className="truncate text-base light:text-gray-600  dark:text-white">{subtitle}</div>
                     ) : null}
                     {artistNames ? (
-                        <div className=" truncate text-sm text-gray-600">{artistNames}</div>
+                        <div className=" truncate text-sm light:text-gray-600 dark:text-white">{artistNames}</div>
                     ) : null}
                 </div>
 
                 {duration ? (
-                    <div className="shrink-0 text-sm text-gray-600 tabular-nums">
+                    <div className="shrink-0 text-sm light:text-gray-600 dark:text-white tabular-nums">
                         {duration}
                     </div>
                 ) : null}
