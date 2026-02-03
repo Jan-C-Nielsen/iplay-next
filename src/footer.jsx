@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import ToggleDarkmode from "./toggleDarkmode";
 
 export default function Footer() {
 
@@ -69,6 +70,10 @@ export default function Footer() {
 
                     </div>
                 </button>
+
+
+
+
                 {/* Popup menu */}
                 {open && (
                     <div className="absolute bottom-14 left-1/2 -translate-x-1/2
@@ -86,6 +91,7 @@ export default function Footer() {
                     </div>
                 )}
             </div>
+            <ToggleDarkmode />
         </footer>
     )
 }

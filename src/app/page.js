@@ -31,7 +31,7 @@ export default async function Home() {
     return <div >Error: {PlayListResponse.statusText}</div>;
   }
 
-  return <div className="w-[450px] mx-auto">
+  return <div className="w-[450px] mx-auto dark:bg-gray-900 dark:text-white">
     <div className="relative w-full h-64">
       <div className="flex justify-center">
         <Image src="/sound-wave.svg" alt="Example image" width={450} height={272} />
